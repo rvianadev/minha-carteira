@@ -1,17 +1,25 @@
+/* eslint-disable no-dupe-keys */
 import React from 'react';
 
 import { Container, TitleContainer, Controllers } from './styles';
 
-const ContentHeader: React.FC = () => {
+interface IContentHeaderProps {
+  title: string;
+  lineColor: string;
+  children: React.ReactNode;
+}
+
+const ContentHeader: React.FC<IContentHeaderProps> = ({
+  title,
+  lineColor,
+  children,
+}) => {
   return (
     <Container>
-      <TitleContainer>
-        <h1>Título</h1>
+      <TitleContainer lineColor={lineColor}>
+        <h1>{title}</h1>
       </TitleContainer>
-      <Controllers>
-        <button type="button">Botão 1 </button>
-        <button type="button">Botão 2 </button>
-      </Controllers>
+      <Controllers>{children}</Controllers>
     </Container>
   );
 };
