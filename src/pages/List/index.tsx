@@ -17,140 +17,120 @@ const List: React.FC = () => {
       </ContentHeader>
       <Content>
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
           amount="R$ 125,50"
         />
         <HistoryFinanceCard
-          cardColor="#313862"
           tagColor="#e44c4e"
           title="Conta de Luz"
           subtitle="22/12/2021"
