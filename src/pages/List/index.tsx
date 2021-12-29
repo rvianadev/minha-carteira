@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Container, Content, Filters } from './styles';
 
@@ -6,16 +7,8 @@ import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
-interface IRouteParams {
-  match: {
-    params: {
-      type: string;
-    };
-  };
-}
-
-const List: React.FC<IRouteParams> = ({ match }) => {
-  const { type } = match.params;
+const List: React.FC = () => {
+  const { type } = useParams();
 
   const title = useMemo(() => {
     return type === 'entry-balance' ? 'Entradas' : 'Saídas';
