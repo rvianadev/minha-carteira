@@ -60,7 +60,7 @@ const List: React.FC = () => {
     });
 
     setData(response);
-  }, []);
+  }, [type]);
 
   return (
     <Container>
