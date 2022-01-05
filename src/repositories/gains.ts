@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default [
   {
     description: 'Salário',
@@ -47,26 +48,5 @@ export default [
     type: 'entrada',
     frequency: 'recorrente',
     date: '2020-04-10',
-  },
-  {
-    description: 'Salário',
-    amount: '2500.15',
-    type: 'entrada',
-    frequency: 'recorrente',
-    date: '2020-05-10',
-  },
-  {
-    description: 'Salário',
-    amount: '2500.12',
-    type: 'entrada',
-    frequency: 'recorrente',
-    date: '2020-06-10',
-  },
-  {
-    description: 'Salário',
-    amount: '2500.00',
-    type: 'entrada',
-    frequency: 'recorrente',
-    date: '2020-07-10',
   },
 ];
