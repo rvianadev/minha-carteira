@@ -9,6 +9,8 @@ import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
+import formatCurrency from '../../utils/formatCurrency';
+import formatDate from '../../utils/formatDate';
 
 interface IData {
   id: string;
@@ -53,13 +55,13 @@ const List: React.FC = () => {
       return {
         id: String(Math.random() * listData.length),
         description: item.description,
-        amountFormatted: item.amount,
+        amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dateFormatted: item.date,
+        dateFormatted: formatDate(item.date),
+        // dateFormatted: item.date,
         tagColor: item.frequency === 'recorrente' ? '#e44c4e' : '#4e41f0',
       };
     });
-    console.log('Id gerado: ', response);
     setData(response);
   }, [type]);
 
