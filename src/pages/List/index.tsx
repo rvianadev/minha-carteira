@@ -11,6 +11,7 @@ import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
 import formatCurrency from '../../utils/formatCurrency';
 import formatDate from '../../utils/formatDate';
+import listOfMonths from '../../utils/months';
 
 interface IData {
   id: string;
@@ -44,27 +45,34 @@ const List: React.FC = () => {
     return type === 'entry-balance' ? gains : expenses;
   }, [type]);
 
-  const months = [
-    { value: 1, label: 'Janeiro' },
-    { value: 2, label: 'Fevereiro' },
-    { value: 3, label: 'Março' },
-    { value: 4, label: 'Abril' },
-    { value: 5, label: 'Maio' },
-    { value: 6, label: 'Junho' },
-    { value: 7, label: 'Julho' },
-    { value: 8, label: 'Agosto' },
-    { value: 9, label: 'Setembro' },
-    { value: 10, label: 'Outubro' },
-    { value: 11, label: 'Novembro' },
-    { value: 12, label: 'Dezembro' },
-  ];
+  const years = useMemo(() => {
+    let uniqueYears: number[] = [];
 
-  const years = [
-    { value: 2019, label: 2019 },
-    { value: 2020, label: 2020 },
-    { value: 2021, label: 2021 },
-    { value: 2022, label: 2022 },
-  ];
+    listData.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+
+      if (!uniqueYears.includes(year)) {
+        uniqueYears.push(year);
+      }
+    });
+
+    return uniqueYears.map((year) => {
+      return {
+        value: year,
+        label: year,
+      };
+    });
+  }, [listData]);
+
+  const months = useMemo(() => {
+    return listOfMonths.map((month, index) => {
+      return {
+        value: index + 1,
+        label: month,
+      };
+    });
+  }, [listData]);
 
   useEffect(() => {
     const filteredDate = listData.filter((item) => {
@@ -87,7 +95,7 @@ const List: React.FC = () => {
       };
     });
     setData(formattedDate);
-  }, [type, monthSelected, yearSelected]);
+  }, [type, monthSelected, yearSelected, listData]);
 
   return (
     <Container>
