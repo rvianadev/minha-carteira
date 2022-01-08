@@ -19,14 +19,14 @@ export default [
     amount: '2500.23',
     type: 'entrada',
     frequency: 'recorrente',
-    date: '2020-02-10',
+    date: '2018-02-10',
   },
   {
     description: 'Freela site',
     amount: '900.23',
     type: 'entrada',
     frequency: 'eventual',
-    date: '2018-02-21',
+    date: '2020-02-21',
   },
   {
     description: 'Freela app',
@@ -40,13 +40,13 @@ export default [
     amount: '2500.25',
     type: 'entrada',
     frequency: 'recorrente',
-    date: '2020-03-10',
+    date: '2021-03-10',
   },
   {
     description: 'Salário',
     amount: '2500.18',
     type: 'entrada',
     frequency: 'recorrente',
-    date: '2020-04-10',
+    date: '2021-04-10',
   },
 ];

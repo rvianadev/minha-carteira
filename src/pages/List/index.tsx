@@ -57,6 +57,9 @@ const List: React.FC = () => {
       }
     });
 
+    const [firstYear] = uniqueYears;
+    setYearSelected(`${firstYear}`);
+
     return uniqueYears.map((year) => {
       return {
         value: year,
@@ -72,7 +75,7 @@ const List: React.FC = () => {
         label: month,
       };
     });
-  }, [listData]);
+  }, []);
 
   useEffect(() => {
     const filteredDate = listData.filter((item) => {
@@ -95,7 +98,9 @@ const List: React.FC = () => {
       };
     });
     setData(formattedDate);
-  }, [type, monthSelected, yearSelected, listData]);
+  }, [data.length, monthSelected, yearSelected, listData]);
+
+  console.log('Data? ', data);
 
   return (
     <Container>
