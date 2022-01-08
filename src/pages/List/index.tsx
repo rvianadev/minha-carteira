@@ -100,7 +100,9 @@ const List: React.FC = () => {
     setData(formattedDate);
   }, [data.length, monthSelected, yearSelected, listData]);
 
-  console.log('Data? ', data);
+  console.log('Mês selecionado: ', monthSelected);
+  console.log('Ano selecionado: ', yearSelected);
+  console.log('Fim');
 
   return (
     <Container>

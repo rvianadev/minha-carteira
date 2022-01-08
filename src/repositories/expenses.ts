@@ -12,7 +12,7 @@ export default [
     amount: '75.55',
     type: 'saída',
     frequency: 'recorrente',
-    date: '2016-01-15',
+    date: '2017-01-15',
   },
   {
     description: 'Telefone',

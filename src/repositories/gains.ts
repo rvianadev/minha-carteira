@@ -37,6 +37,13 @@ export default [
   },
   {
     description: 'Salário',
+    amount: '7200.36',
+    type: 'entrada',
+    frequency: 'recorrente',
+    date: '2020-02-28',
+  },
+  {
+    description: 'Salário',
     amount: '2500.25',
     type: 'entrada',
     frequency: 'recorrente',
