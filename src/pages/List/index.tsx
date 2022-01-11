@@ -121,7 +121,6 @@ const List: React.FC = () => {
         amountFormatted: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
         dateFormatted: formatDate(item.date),
-        // dateFormatted: item.date,
         tagColor: item.frequency === 'recorrente' ? '#4e41f0' : '#e44c4e',
       };
     });
