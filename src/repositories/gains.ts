@@ -56,4 +56,11 @@ export default [
     frequency: 'recorrente',
     date: '2021-04-10',
   },
+  {
+    description: 'Indenização',
+    amount: '2500.18',
+    type: 'entrada',
+    frequency: 'recorrente',
+    date: '2022-01-10',
+  },
 ];

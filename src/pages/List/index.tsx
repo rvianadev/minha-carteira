@@ -26,8 +26,10 @@ const List: React.FC = () => {
   const [monthSelected, setMonthSelected] = useState<number>(
     new Date().getMonth() + 1
   );
-  const [yearSelected, setYearSelected] = useState<number>();
-  // new Date().getFullYear()
+  const [yearSelected, setYearSelected] = useState<number>(
+    new Date().getFullYear()
+  );
+
   const [frequencyFilterSelected, setFrequencyFilterSelected] = useState([
     'recorrente',
     'eventual',
@@ -63,10 +65,8 @@ const List: React.FC = () => {
       }
     });
 
-    const [firstYear] = uniqueYears;
-    setYearSelected(firstYear);
-
-    console.log('firstYear: ', firstYear);
+    // const [firstYear] = uniqueYears;
+    // setYearSelected(firstYear);
 
     return uniqueYears.map((year) => {
       return {
