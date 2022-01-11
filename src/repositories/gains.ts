@@ -37,6 +37,13 @@ export default [
   },
   {
     description: 'Salário',
+    amount: '7200.36',
+    type: 'entrada',
+    frequency: 'recorrente',
+    date: '2020-02-28',
+  },
+  {
+    description: 'Salário',
     amount: '2500.25',
     type: 'entrada',
     frequency: 'recorrente',
@@ -48,5 +55,12 @@ export default [
     type: 'entrada',
     frequency: 'recorrente',
     date: '2021-04-10',
+  },
+  {
+    description: 'Indenização',
+    amount: '2500.18',
+    type: 'entrada',
+    frequency: 'recorrente',
+    date: '2022-01-10',
   },
 ];

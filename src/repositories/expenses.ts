@@ -12,7 +12,7 @@ export default [
     amount: '75.55',
     type: 'saída',
     frequency: 'recorrente',
-    date: '2016-01-15',
+    date: '2017-01-15',
   },
   {
     description: 'Telefone',
@@ -334,13 +334,20 @@ export default [
     amount: '250.00',
     type: 'saída',
     frequency: 'eventual',
-    date: '2021-07-26',
+    date: '2020-07-26',
   },
   {
     description: 'Pizza',
     amount: '60.00',
     type: 'saída',
     frequency: 'eventual',
-    date: '2021-07-19',
+    date: '2020-07-19',
+  },
+  {
+    description: 'IPVA',
+    amount: '155.50',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2022-01-10',
   },
 ];
