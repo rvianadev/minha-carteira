@@ -41,7 +41,7 @@ const List: React.FC = () => {
     return movimentType === 'entry-balance'
       ? {
           title: 'Entradas',
-          lineColor: '#f7931b',
+          lineColor: '#4e41f0',
           data: gains,
         }
       : {
@@ -65,9 +65,6 @@ const List: React.FC = () => {
       }
     });
 
-    // const [firstYear] = uniqueYears;
-    // setYearSelected(firstYear);
-
     return uniqueYears.map((year) => {
       return {
         value: year,
@@ -76,7 +73,6 @@ const List: React.FC = () => {
     });
   }, [pageData]);
 
-  console.log('yearSelected: ', yearSelected);
 
   const months = useMemo(() => {
     return listOfMonths.map((month, index) => {
