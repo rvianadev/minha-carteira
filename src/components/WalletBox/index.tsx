@@ -22,6 +22,7 @@ const WalletBox: React.FC<IWalletBoxProps> = ({
   icon,
   color,
 }) => {
+
   const iconSelected = useMemo(() => {
     switch (icon) {
       case 'dollar':

@@ -24,7 +24,7 @@ export const Container = styled.div<IContainerProps>`
 
     position: absolute;
     top: -10px;
-    right: -30px;
+    right: -25px;
 
     opacity: 0.3;
   }
