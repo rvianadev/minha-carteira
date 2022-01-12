@@ -3,10 +3,14 @@ import React, { useState, useMemo } from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import WalletBox from '../../components/WalletBox';
+import MessageBox from '../../components/MessageBox';
 
 import listOfMonths from '../../utils/months';
 import expenses from '../../repositories/expenses';
 import gains from '../../repositories/gains';
+
+import happyImg from '../../assets/happy.svg';
+import sadImg from '../../assets/sad.svg';
 
 import { Container, Content } from './styles';
 
@@ -46,11 +50,6 @@ const Dashboard: React.FC = () => {
       };
     });
   }, []);
-
-  const options = [
-    { value: 'Opção 1', label: 'Opção 1' },
-    { value: 'Opção 2', label: 'Opção 2' },
-  ];
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -95,17 +94,23 @@ const Dashboard: React.FC = () => {
         />
         <WalletBox
           title="entradas"
-          amount={5000.00}
+          amount={5000.0}
           footerLabel="atualizado com base nas entradas e saídas"
           icon="arrowUp"
           color="#f7931b"
         />
         <WalletBox
           title="saídas"
-          amount={4850.00}
+          amount={4850.0}
           footerLabel="atualizado com base nas entradas e saídas"
           icon="arrowDown"
           color="#e44c4e"
+        />
+        <MessageBox
+          title="Muito bem!"
+          description="Sua carteira está positiva!"
+          footerText="Continue assim. Considere investir seu saldo."
+          icon={happyImg}
         />
       </Content>
     </Container>
