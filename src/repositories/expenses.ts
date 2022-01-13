@@ -341,7 +341,14 @@ export default [
     amount: '60.00',
     type: 'saída',
     frequency: 'eventual',
-    date: '2020-07-19',
+    date: '2020-07-28',
+  },
+  {
+    description: 'IPVA',
+    amount: '286.77',
+    type: 'saída',
+    frequency: 'recorrente',
+    date: '2021-01-19',
   },
   {
     description: 'IPVA',
