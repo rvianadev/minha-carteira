@@ -73,7 +73,6 @@ const List: React.FC = () => {
     });
   }, [pageData]);
 
-
   const months = useMemo(() => {
     return listOfMonths.map((month, index) => {
       return {
@@ -102,7 +101,7 @@ const List: React.FC = () => {
     try {
       const parseMonth = Number(month);
       setMonthSelected(parseMonth);
-    } catch (error) {
+    } catch {
       throw new Error('Invalid month value. Is accept 1 - 12');
     }
   };
@@ -111,7 +110,7 @@ const List: React.FC = () => {
     try {
       const parseYear = Number(year);
       setYearSelected(parseYear);
-    } catch (error) {
+    } catch {
       throw new Error('Invalid year value. Is accept integer numbers');
     }
   };

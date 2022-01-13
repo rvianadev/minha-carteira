@@ -3,10 +3,16 @@ import React, { useState, useMemo } from 'react';
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import WalletBox from '../../components/WalletBox';
+import MessageBox from '../../components/MessageBox';
+import PieChartBox from '../../components/PieChartBox';
 
 import listOfMonths from '../../utils/months';
 import expenses from '../../repositories/expenses';
 import gains from '../../repositories/gains';
+
+import grinningImg from '../../assets/grinning.svg';
+import happyImg from '../../assets/happy.svg';
+import sadImg from '../../assets/sad.svg';
 
 import { Container, Content } from './styles';
 
@@ -47,16 +53,105 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
-  const options = [
-    { value: 'Opção 1', label: 'Opção 1' },
-    { value: 'Opção 2', label: 'Opção 2' },
-  ];
+  const totalExpenses = useMemo(() => {
+    let total: number = 0;
+
+    expenses.forEach((item) => {
+      const date = new Date(item.date);
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error('Amount must be number.');
+        }
+      }
+    });
+
+    return total;
+  }, [monthSelected, yearSelected]);
+
+  const totalGains = useMemo(() => {
+    let total: number = 0;
+
+    gains.forEach((item) => {
+      const date = new Date(item.date);
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error('Amount must be number.');
+        }
+      }
+    });
+
+    return total;
+  }, [monthSelected, yearSelected]);
+
+  const totalBalance = useMemo(() => {
+    return totalGains - totalExpenses;
+  }, [totalGains, totalExpenses]);
+
+  const message = useMemo(() => {
+    if (totalBalance < 0) {
+      return {
+        title: 'Que triste!',
+        description: 'Neste mês você gastou mais do que deveria',
+        footerText: 'Verifique seus gastos e corte os desnecessários.',
+        icon: sadImg,
+      };
+    } else if (totalBalance === 0) {
+      return {
+        title: 'Ufaa!',
+        description: 'Neste mês você gastou exatamente o que ganhou.',
+        footerText:
+          'Tenha cuidado. No próximo mês tente poupar o seu dinheiro.',
+        icon: grinningImg,
+      };
+    } else {
+      return {
+        title: 'Muito bem!',
+        description: 'Sua carteira está positiva!',
+        footerText: 'Continue assim. Considere investir seu saldo.',
+        icon: happyImg,
+      };
+    }
+  }, [totalBalance]);
+
+  const relationExpensesVersusGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const gainsPercents = (totalGains / total) * 100;
+    const expensesPercents = (totalExpenses / total) * 100;
+
+    const data = [
+      {
+        name: 'Entradas',
+        value: totalExpenses,
+        percent: Number(gainsPercents.toFixed(1)),
+        color: '#f7931b',
+      },
+      {
+        name: 'Saídas',
+        value: totalExpenses,
+        percent: Number(expensesPercents.toFixed(1)),
+        color: '#e44c4e',
+      },
+    ];
+
+    return data;
+  }, [totalGains, totalExpenses]);
 
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
       setMonthSelected(parseMonth);
-    } catch (error) {
+    } catch {
       throw new Error('Invalid month value. Is accept 1 - 12');
     }
   };
@@ -65,7 +160,7 @@ const Dashboard: React.FC = () => {
     try {
       const parseYear = Number(year);
       setYearSelected(parseYear);
-    } catch (error) {
+    } catch {
       throw new Error('Invalid year value. Is accept integer numbers');
     }
   };
@@ -88,25 +183,32 @@ const Dashboard: React.FC = () => {
       <Content>
         <WalletBox
           title="saldo"
-          amount={150.0}
+          amount={totalBalance}
           footerLabel="atualizado com base nas entradas e saídas"
           icon="dollar"
           color="#4e41f0"
         />
         <WalletBox
           title="entradas"
-          amount={5000.00}
+          amount={totalGains}
           footerLabel="atualizado com base nas entradas e saídas"
           icon="arrowUp"
           color="#f7931b"
         />
         <WalletBox
           title="saídas"
-          amount={4850.00}
+          amount={totalExpenses}
           footerLabel="atualizado com base nas entradas e saídas"
           icon="arrowDown"
           color="#e44c4e"
         />
+        <MessageBox
+          title={message.title}
+          description={message.description}
+          footerText={message.footerText}
+          icon={message.icon}
+        />
+        <PieChartBox data={relationExpensesVersusGains} />
       </Content>
     </Container>
   );
