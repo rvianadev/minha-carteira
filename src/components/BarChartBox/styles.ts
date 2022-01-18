@@ -84,5 +84,5 @@ export const SideRight = styled.main`
 
   padding-top: 35px;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
