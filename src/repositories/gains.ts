@@ -44,10 +44,17 @@ export default [
   },
   {
     description: 'Salário',
-    amount: '5289.36',
+    amount: '3789.36',
     type: 'entrada',
     frequency: 'recorrente',
     date: '2020-07-14',
+  },
+  {
+    description: 'Freela',
+    amount: '5912.19',
+    type: 'entrada',
+    frequency: 'eventual',
+    date: '2020-07-18',
   },
   {
     description: 'Freela',
