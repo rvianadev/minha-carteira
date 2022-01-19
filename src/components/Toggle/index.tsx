@@ -14,21 +14,17 @@ const Toggle: React.FC<IToggleProps> = ({
   labelRight,
   checked,
   onChange,
-}) => {
-  const [online, setOnline] = useState(true);
-
-  return (
-    <Container>
-      <ToggleLabel>{labelLeft}</ToggleLabel>
-      <ToggleSelector
-        checked={checked}
-        uncheckedIcon={false}
-        checkedIcon={false}
-        onChange={onChange}
-      />
-      <ToggleLabel>{labelRight}</ToggleLabel>
-    </Container>
-  );
-};
+}) => (
+  <Container>
+    <ToggleLabel>{labelLeft}</ToggleLabel>
+    <ToggleSelector
+      checked={checked}
+      uncheckedIcon={false}
+      checkedIcon={false}
+      onChange={onChange}
+    />
+    <ToggleLabel>{labelRight}</ToggleLabel>
+  </Container>
+);
 
 export default Toggle;
