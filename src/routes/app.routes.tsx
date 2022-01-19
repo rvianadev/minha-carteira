@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import Dashboard from '../pages/Dashboard';
 import List from '../pages/List';
 
-const AppRoutes: React.FC = () => (
+const App: React.FC = () => (
   <Layout>
     <Routes>
       <Route path="/dashboard" element={<Dashboard />} />
@@ -14,4 +14,4 @@ const AppRoutes: React.FC = () => (
   </Layout>
 );
 
-export default AppRoutes;
+export default App;
