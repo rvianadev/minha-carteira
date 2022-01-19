@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
@@ -15,6 +15,8 @@ import gains from '../../repositories/gains';
 import grinningImg from '../../assets/grinning.svg';
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
+import opsImg from '../../assets/ops.svg';
+
 
 import { Container, Content } from './styles';
 
@@ -35,6 +37,7 @@ const Dashboard: React.FC = () => {
 
       if (!uniqueYears.includes(year)) {
         uniqueYears.push(year);
+        uniqueYears.sort();
       }
     });
 
@@ -107,6 +110,14 @@ const Dashboard: React.FC = () => {
         footerText: 'Verifique seus gastos e corte os desnecessários.',
         icon: sadImg,
       };
+    } else if (totalGains === 0 && totalExpenses === 0) {
+      return {
+        title: 'Ops!',
+        description: 'Neste mês não há registros de entradas ou saídas.',
+        footerText:
+          'Parece que você não fez nenhuma registro no mês e ano selecionado.',
+        icon: opsImg,
+      };
     } else if (totalBalance === 0) {
       return {
         title: 'Ufaa!',
@@ -123,25 +134,25 @@ const Dashboard: React.FC = () => {
         icon: happyImg,
       };
     }
-  }, [totalBalance]);
+  }, [totalBalance, totalGains, totalExpenses]);
 
   const relationExpensesVersusGains = useMemo(() => {
     const total = totalGains + totalExpenses;
 
-    const gainsPercents = (totalGains / total) * 100;
-    const expensesPercents = (totalExpenses / total) * 100;
+    const percentGains = Number(((totalGains / total) * 100).toFixed(1));
+    const percentExpenses = Number(((totalExpenses / total) * 100).toFixed(1));
 
     const data = [
       {
         name: 'Entradas',
-        value: totalExpenses,
-        percent: Number(gainsPercents.toFixed(1)),
+        value: totalGains,
+        percent: percentGains ? percentGains : 0,
         color: '#f7931b',
       },
       {
         name: 'Saídas',
         value: totalExpenses,
-        percent: Number(expensesPercents.toFixed(1)),
+        percent: percentExpenses ? percentExpenses : 0,
         color: '#e44c4e',
       },
     ];
@@ -223,17 +234,22 @@ const Dashboard: React.FC = () => {
 
     const total = amountRecurrent + amountEventual;
 
+    const percentRecurrent = Number(
+      ((amountRecurrent / total) * 100).toFixed(1)
+    );
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
+
     return [
       {
         name: 'Recorrentes',
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b',
       },
       {
         name: 'Eventuais',
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e',
       },
     ];
@@ -263,39 +279,44 @@ const Dashboard: React.FC = () => {
 
     const total = amountRecurrent + amountEventual;
 
+    const percentRecurrent = Number(
+      ((amountRecurrent / total) * 100).toFixed(1)
+    );
+    const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
+
     return [
       {
         name: 'Recorrentes',
         amount: amountRecurrent,
-        percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+        percent: percentRecurrent ? percentRecurrent : 0,
         color: '#f7931b',
       },
       {
         name: 'Eventuais',
         amount: amountEventual,
-        percent: Number(((amountEventual / total) * 100).toFixed(1)),
+        percent: percentEventual ? percentEventual : 0,
         color: '#e44c4e',
       },
     ];
   }, [monthSelected, yearSelected]);
 
-  const handleMonthSelected = (month: string) => {
+  const handleMonthSelected = useCallback((month: string) => {
     try {
       const parseMonth = Number(month);
       setMonthSelected(parseMonth);
     } catch {
       throw new Error('Invalid month value. Is accept 1 - 12');
     }
-  };
+  },[]);
 
-  const handleYearSelected = (year: string) => {
+  const handleYearSelected = useCallback((year: string) => {
     try {
       const parseYear = Number(year);
       setYearSelected(parseYear);
     } catch {
       throw new Error('Invalid year value. Is accept integer numbers');
     }
-  };
+  },[]);
 
   return (
     <Container>
@@ -348,9 +369,15 @@ const Dashboard: React.FC = () => {
           lineColorAmountOutput="#e44c4e"
         />
 
-        <BarChartBox title="Saídas" data={relationExpensesRecurrentVersusEventual} />
+        <BarChartBox
+          title="Saídas"
+          data={relationExpensesRecurrentVersusEventual}
+        />
 
-        <BarChartBox title="Entradas" data={relationGainsRecurrentVersusEventual} />
+        <BarChartBox
+          title="Entradas"
+          data={relationGainsRecurrentVersusEventual}
+        />
       </Content>
     </Container>
   );
