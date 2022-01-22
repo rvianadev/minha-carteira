@@ -3,6 +3,9 @@ import styled, { css } from 'styled-components';
 interface IContainerProps {
   menuIsOpen: boolean;
 }
+interface IThemeToggleFooterProps {
+  menuIsOpen: boolean;
+}
 
 export const Container = styled.div<IContainerProps>`
   grid-area: AS;
@@ -15,7 +18,7 @@ export const Container = styled.div<IContainerProps>`
   position: relative;
 
   @media (max-width: 600px) {
-    padding-left: 7px;
+    padding-left: 20px;
     position: fixed;
     z-index: 2;
 
@@ -122,7 +125,7 @@ export const ToggleMenu = styled.button`
   }
 
   display: none;
-  
+
   @media (max-width: 600px) {
     display: flex;
     justify-content: center;
@@ -130,4 +133,12 @@ export const ToggleMenu = styled.button`
   }
 `;
 
+export const ThemeToggleFooter = styled.footer<IThemeToggleFooterProps>`
+  display: none;
+  position: absolute;
+  bottom: 30px;
 
+  @media (max-width: 470px) {
+    display: ${(props) => (props.menuIsOpen ? 'flex' : 'none')};
+  }
+`;
